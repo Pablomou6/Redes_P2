@@ -1,3 +1,8 @@
 ssh usuario@ip_destino
 
 scp archivo usuario@ip_destino:ruta
+
+
+clienteD:
+Co while recv vaise coller todos os mensajes hastaque nn quede ningún. Ahí acaba o bucle, cando acaba de facer
+a suma total dos bytes recibidos nos diferentes msjs. 
