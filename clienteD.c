@@ -50,22 +50,24 @@ int main(int argc, char* argv[]) {
     }
 
     // Esperar un segundo para dar tiempo al servidor a enviar ambos mensajes
-    sleep(1); //Recibe sin problemas
+    //sleep(1); //Recibe sin problemas
     //Sin sleep puede funcionar sin problemas, pero también puede no recibir el segundo msj, recibirlo a medias o dar error.
 
     // Recibir el mensaje del servidor
-    ssize_t numBytes = recv(Socket, mensaje, sizeof(mensaje) - 1, 0); // Deja espacio para el terminador nulo
-    if(numBytes < 0) {
-        perror("El mensaje no se ha podido recibir.\n");
-        close(Socket);
-        exit(EXIT_FAILURE);
-    }
+    ssize_t numBytes; // Deja espacio para el terminador nulo
+    size_t totalBytesReceived = 0;
+    memset(mensaje, 0, sizeof(mensaje)); // Inicializar el buffer
 
-    mensaje[numBytes] = '\0'; // Asegura que el mensaje sea una cadena válida
+    while ((numBytes = recv(Socket, mensaje + totalBytesReceived, sizeof(mensaje) - totalBytesReceived - 1, 0)) > 45) {
+        totalBytesReceived += numBytes;
+        // Si deseas probar con diferentes tamaños, puedes ajustar el tercer argumento de recv()
+        // numBytes = recv(Socket, mensaje + totalBytesReceived, 5, 0); // Recibe 5 bytes, por ejemplo
+    }
+    mensaje[totalBytesReceived] = '\0';
 
     // Mostrar el mensaje recibido
     printf("El mensaje ha sido: %s\n", mensaje);
-    printf("El número de bytes recibidos es: %zd\n", numBytes);
+    printf("El número de bytes recibidos es: %zd\n", totalBytesReceived);
 
     // Cerrar el socket
     if(close(Socket) < 0) {
