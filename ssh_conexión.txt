@@ -1,0 +1,3 @@
+ssh usuario@ip_destino
+
+scp archivo usuario@ip_destino:ruta
