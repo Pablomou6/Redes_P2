@@ -1,0 +1,4 @@
+¡Hola! Este es un texto de prueba para la práctica.
+Es un breve conjunto de líneas para demostrar como func
+iona el código para el servidorMAY y el clienteMAY.
+Saludos.
