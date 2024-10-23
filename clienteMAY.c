@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
         // Asegura que el mensaje recibido sea una cadena válida
         mensaje[numBytes] = '\0';
         //Imprimir en el archivo de salida el mensaje e mayúsculas
-        fprintf(output, "%s\n", mensaje);
+        fprintf(output, "%s", mensaje);
     }
 
     // Cerrar el socket

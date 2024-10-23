@@ -88,8 +88,7 @@ int main(int argc, char* argv[]) {
                 perror("Error al enviar datos al cliente");
                 break;
             }
-        
-        close(SocketConnect); 
         }
+        close(SocketConnect); 
     }
 }
