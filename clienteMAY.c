@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
     }
 
     //Procesamos el archivo línea a línea y se envía
-    while(fgets(mensaje, sizeof(mensaje), doc) != EOF) {
+    while(fgets(mensaje, sizeof(mensaje), doc) != NULL) {
         ssize_t TamMsg = send(Socket, mensaje, strlen(mensaje), 0);
         if(TamMsg < 0){
             perror("No se pudo enviar el mensaje.\n");         

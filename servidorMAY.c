@@ -6,6 +6,7 @@
 #include<sys/types.h>
 #include<string.h>
 #include<unistd.h>
+#include<ctype.h>
 
 void convertToUpperCase(char *str) {
     for(int i = 0; str[i] != '\0'; i++) {
@@ -89,5 +90,6 @@ int main(int argc, char* argv[]) {
             }
         
         close(SocketConnect); 
+        }
     }
 }
